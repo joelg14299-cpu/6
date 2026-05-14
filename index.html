@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6 Months With You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top left,#ff4b6e,#ff7ba3,#ffdce7);
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+  position:relative;
+}
+
+/* BIG FLOATING HEART BUBBLES */
+
+#bubbles{
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:0;
+}
+
+.bubble-heart{
+  position:absolute;
+  bottom:-120px;
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle at 30% 30%,
+  rgba(255,255,255,0.55),
+  rgba(255,192,203,0.12));
+
+  opacity:.45;
+
+  animation:floatBubble linear infinite;
+
+  filter:blur(3px);
+
+  box-shadow:
+  0 0 45px rgba(255,255,255,.25),
+  inset 0 0 30px rgba(255,255,255,.1);
+}
+
+@keyframes floatBubble{
+
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:.55;
+  }
+
+  100%{
+    transform:translateY(-130vh) scale(1.4);
+    opacity:0;
+  }
+
+}
+
+/* SMALL HEARTS */
+
+#hearts{
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:1;
+}
+
+.heart{
+  position:absolute;
+  bottom:-50px;
+  width:40px;
+  height:40px;
+  background:rgba(255,255,255,0.14);
+  border-radius:50%;
+  animation:floatUp 10s linear infinite;
+  filter:blur(3px);
+}
+
+@keyframes floatUp{
+
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-120vh) scale(1.4);
+    opacity:0;
+  }
+
+}
+
+/* QUIZ */
+
+.quiz-container{
+  background:rgba(255,255,255,0.1);
+  border:2px solid rgba(255,255,255,0.3);
+  border-radius:25px;
+  padding:40px;
+  width:90%;
+  max-width:540px;
+  text-align:center;
+  backdrop-filter:blur(20px);
+  box-shadow:0 0 35px rgba(255,100,150,0.5);
+  z-index:2;
+  animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:scale(.9);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+
+}
+
+h1{
+  font-size:1.8rem;
+  margin-bottom:25px;
+  text-shadow:0 0 15px rgba(255,255,255,0.6);
+  line-height:1.4;
+}
+
+.btn{
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.5);
+  padding:14px 22px;
+  margin:10px;
+  border-radius:14px;
+  cursor:pointer;
+  color:white;
+  width:85%;
+  transition:all .3s ease;
+  font-size:1rem;
+}
+
+.btn:hover{
+  background:rgba(255,255,255,0.3);
+  transform:scale(1.06);
+}
+
+.remark{
+  margin-top:25px;
+  font-size:1.1rem;
+  opacity:0;
+  transition:all .8s ease;
+  color:#ffeef5;
+  min-height:50px;
+  transform:translateY(10px);
+}
+
+.remark.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* LETTER */
+
+.letter-container{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:
+  radial-gradient(circle at top left,#ff4b6e,#ff7ba3,#ffdce7);
+
+  justify-content:center;
+  align-items:center;
+
+  padding:50px;
+
+  overflow-y:auto;
+
+  z-index:10;
+
+  animation:fadeIn 2s ease;
+}
+
+.letter-text{
+
+  font-family:'Great Vibes',cursive;
+
+  font-size:2rem;
+
+  line-height:1.7;
+
+  color:#fff0f6;
+
+  text-shadow:0 0 10px rgba(255,255,255,0.5);
+
+  max-width:900px;
+
+  white-space:pre-wrap;
+
+  animation:textFade 3s ease;
+
+  text-align:center;
+}
+
+@keyframes textFade{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+/* SURPRISE BUTTON */
+
+.surprise-btn{
+
+  margin-top:40px;
+
+  padding:18px 32px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.2);
+
+  color:white;
+
+  font-size:1rem;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 0 25px rgba(255,255,255,.18);
+
+}
+
+.surprise-btn:hover{
+
+  transform:scale(1.08);
+
+  background:rgba(255,255,255,0.3);
+
+}
+
+audio{
+  display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="bubbles"></div>
+<div id="hearts"></div>
+
+<!-- QUIZ -->
+
+<div class="quiz-container" id="quiz">
+
+<h1 id="question">Loading...</h1>
+
+<div id="buttons"></div>
+
+<div class="remark" id="remark"></div>
+
+</div>
+
+<!-- LETTER -->
+
+<div class="letter-container" id="letter">
+
+<div class="letter-text">
+
+Hey Navanshi,
+
+6 months ago I made a website hoping you'd say yes.
+Still the best yes I've ever heard.
+
+I know we’ve had our ups and downs, misunderstandings, moments where things felt hard, but somehow we still stayed. And honestly? That means a lot to me.
+
+It’s crazy how one random Discord interaction turned into this whole part of my life that I never want to lose.
+
+You became someone I think about every day. Someone I care about more than I probably know how to explain properly.
+
+Even when I act nonchalant or bad at expressing things, I hope you know I really do love you.
+
+You made ordinary moments feel important.
+Late night talks, random arguments, stupid jokes, all of it somehow became memories I genuinely cherish.
+
+And after these 6 months, I still choose you.
+Still want you.
+Still care about you.
+
+Thank you for staying.
+Thank you for loving me.
+And thank you for clicking yes 6 months ago.
+
+I love you ❤️
+
+— Joel
+
+<br><br>
+
+<div style="font-family:'Poppins',sans-serif;font-size:1.1rem;margin-top:20px;">
+Click this for a surprise ❤️
+</div>
+
+<button class="surprise-btn" onclick="window.location.href='memories.html'">
+Open Surprise ✨
+</button>
+
+</div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+  <source src="Best part.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* QUESTIONS */
+
+const questions = [
+
+{
+  q:"How would you describe our first 6 months together?",
+  options:[
+    "Unexpected but perfect",
+    "Chaotic but worth it",
+    "Comforting",
+    "Everything at once"
+  ],
+
+  remarks:[
+    "Still crazy to me how something random became something this important.",
+    "We definitely had our moments 😭 but I’d still choose us every time.",
+    "You became my safe place without even trying.",
+    "Yeah… somehow we became a whole story in just 6 months."
+  ]
+},
+
+{
+  q:"What’s something we got really good at?",
+  options:[
+    "Understanding each other",
+    "Staying through hard times",
+    "Making each other laugh",
+    "All of the above"
+  ],
+
+  remarks:[
+    "Even when words got difficult, we still found each other.",
+    "Distance, moods, bad days… we still stayed.",
+    "No matter how bad my day is, you somehow fix it.",
+    "Honestly, we’ve grown a lot together."
+  ]
+},
+
+{
+  q:"What’s your favorite thing about us now?",
+  options:[
+    "How comfortable we are",
+    "How much we care",
+    "The little moments",
+    "Everything"
+  ],
+
+  remarks:[
+    "I love how natural you feel in my life now.",
+    "Even when we act nonchalant, the care is obvious.",
+    "Late night talks, random jokes, small moments… they matter the most.",
+    "Yeah… loving you became part of my routine."
+  ]
+},
+
+{
+  q:"What do you think changed the most in these 6 months?",
+  options:[
+    "Our bond",
+    "The way we communicate",
+    "How attached we got 😭",
+    "Nothing, we were always meant to be"
+  ],
+
+  remarks:[
+    "It feels stronger now. More real.",
+    "We learned each other slowly, and I like that.",
+    "Okay yeah maybe we got a little too attached 😭",
+    "Honestly? Feels like fate sometimes."
+  ]
+},
+
+{
+  q:"So… after 6 months, was clicking ‘Yes’ worth it?",
+  options:[
+    "Always 💞",
+    "More than worth it",
+    "Best decision ever",
+    "Obviously 😌"
+  ],
+
+  remarks:[
+    "Good. Because loving you was the easiest thing I’ve done.",
+    "That makes me happier than you know.",
+    "Still smiling over that yes 6 months later.",
+    "Yeah okay we’re kinda cute 😭"
+  ]
+}
+
+];
+
+const questionEl=document.getElementById('question');
+const buttonsEl=document.getElementById('buttons');
+const remarkEl=document.getElementById('remark');
+const heartsContainer=document.getElementById('hearts');
+const bubblesContainer=document.getElementById('bubbles');
+const letter=document.getElementById('letter');
+const quiz=document.getElementById('quiz');
+
+let current=0;
+
+/* SMALL HEARTS */
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.classList.add("heart");
+
+  heart.style.left=Math.random()*100+"vw";
+
+  heart.style.width=heart.style.height=Math.random()*30+30+"px";
+
+  heart.style.animationDuration=Math.random()*5+8+"s";
+
+  heartsContainer.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),12000);
+
+}
+
+setInterval(createHeart,400);
+
+/* BIG HEART BUBBLES */
+
+function createBubbleHeart(){
+
+  const bubble=document.createElement("div");
+
+  bubble.classList.add("bubble-heart");
+
+  bubble.style.left=Math.random()*100+"vw";
+
+  bubble.style.width=bubble.style.height=Math.random()*100+80+"px";
+
+  bubble.style.animationDuration=Math.random()*7+12+"s";
+
+  bubblesContainer.appendChild(bubble);
+
+  setTimeout(()=>bubble.remove(),16000);
+
+}
+
+setInterval(createBubbleHeart,1200);
+
+/* QUIZ */
+
+function showQuestion(){
+
+  const q=questions[current];
+
+  questionEl.textContent=q.q;
+
+  buttonsEl.innerHTML="";
+
+  remarkEl.classList.remove("show");
+
+  q.options.forEach((opt,i)=>{
+
+    const btn=document.createElement("button");
+
+    btn.classList.add("btn");
+
+    btn.textContent=opt;
+
+    btn.onclick=()=>handleAnswer(i);
+
+    buttonsEl.appendChild(btn);
+
+  });
+
+}
+
+async function handleAnswer(index){
+
+  const q=questions[current];
+
+  remarkEl.textContent=q.remarks[index];
+
+  remarkEl.classList.add("show");
+
+  await new Promise(res=>setTimeout(res,3000));
+
+  current++;
+
+  if(current<questions.length){
+
+    showQuestion();
+
+  }else{
+
+    quiz.style.display="none";
+
+    letter.style.display="flex";
+
+  }
+
+}
+
+/* MUSIC */
+
+const audio=document.getElementById("bgMusic");
+
+document.body.addEventListener("click",()=>{
+
+  if(audio.paused){
+
+    audio.play();
+
+  }
+
+},{once:true});
+
+showQuestion();
+
+</script>
+
+</body>
+</html>

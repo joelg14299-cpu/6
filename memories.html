@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Memories ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top left,#ff4b6e,#ff7ba3,#ffdce7);
+  position:relative;
+}
+
+/* FLOATING HEART BUBBLES */
+
+#bubbles{
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:0;
+}
+
+.bubble-heart{
+  position:absolute;
+  bottom:-150px;
+  border-radius:50%;
+  background:
+  radial-gradient(circle at 30% 30%,
+  rgba(255,255,255,0.55),
+  rgba(255,192,203,0.12));
+
+  opacity:.45;
+  animation:floatBubble linear infinite;
+  filter:blur(3px);
+
+  box-shadow:
+  0 0 45px rgba(255,255,255,.25),
+  inset 0 0 30px rgba(255,255,255,.1);
+}
+
+@keyframes floatBubble{
+
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:.55;
+  }
+
+  100%{
+    transform:translateY(-130vh) scale(1.4);
+    opacity:0;
+  }
+
+}
+
+/* VIDEO CONTAINER */
+
+.video-wrapper{
+
+  position:relative;
+  z-index:2;
+
+  width:360px;
+  height:640px;
+
+  border-radius:30px;
+  overflow:hidden;
+
+  background:black;
+
+  box-shadow:
+  0 0 40px rgba(255,255,255,.25),
+  0 0 80px rgba(255,100,150,.35);
+
+}
+
+/* VIDEO */
+
+video{
+
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  background:black;
+
+}
+
+/* TITLE */
+
+.title{
+
+  position:absolute;
+  top:18px;
+  left:18px;
+
+  padding:8px 16px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.18);
+
+  backdrop-filter:blur(10px);
+
+  color:white;
+
+  z-index:5;
+
+  font-size:1rem;
+
+}
+
+/* COUNT */
+
+.video-count{
+
+  position:absolute;
+  top:18px;
+  right:18px;
+
+  padding:8px 14px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.18);
+
+  backdrop-filter:blur(10px);
+
+  color:white;
+
+  z-index:5;
+
+  font-size:.95rem;
+
+}
+
+/* CONTROLS */
+
+.controls{
+
+  position:absolute;
+
+  bottom:18px;
+
+  width:100%;
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:14px;
+
+  z-index:5;
+
+}
+
+.control-btn{
+
+  width:55px;
+  height:55px;
+
+  border:none;
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.18);
+
+  backdrop-filter:blur(10px);
+
+  color:white;
+
+  font-size:1.1rem;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+
+  box-shadow:0 0 20px rgba(255,255,255,.15);
+
+}
+
+.control-btn:hover{
+
+  transform:scale(1.08);
+
+  background:rgba(255,255,255,0.28);
+
+}
+
+/* MOBILE */
+
+@media(max-width:450px){
+
+  .video-wrapper{
+
+    width:92vw;
+    height:82vh;
+
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="bubbles"></div>
+
+<div class="video-wrapper">
+
+  <div class="title">
+    Our Memories ❤️
+  </div>
+
+  <div class="video-count" id="videoCount">
+    1 / 6
+  </div>
+
+  <video
+  id="memoryVideo"
+  playsinline
+  controls
+  preload="auto">
+  </video>
+
+  <div class="controls">
+
+    <button class="control-btn" id="rewindBtn">
+      ⏪
+    </button>
+
+    <button class="control-btn" id="playPauseBtn">
+      ▶
+    </button>
+
+    <button class="control-btn" id="forwardBtn">
+      ⏩
+    </button>
+
+    <button class="control-btn" id="skipBtn">
+      ⏭
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+/* FLOATING HEARTS */
+
+const bubbles=document.getElementById("bubbles");
+
+function createBubbleHeart(){
+
+  const bubble=document.createElement("div");
+
+  bubble.classList.add("bubble-heart");
+
+  bubble.style.left=Math.random()*100+"vw";
+
+  const size=Math.random()*120+80;
+
+  bubble.style.width=size+"px";
+  bubble.style.height=size+"px";
+
+  bubble.style.animationDuration=Math.random()*8+12+"s";
+
+  bubbles.appendChild(bubble);
+
+  setTimeout(()=>{
+
+    bubble.remove();
+
+  },20000);
+
+}
+
+setInterval(createBubbleHeart,900);
+
+/* VIDEO PLAYER */
+
+const videos=[
+
+  "video1.mp4",
+  "video2.mp4",
+  "video3.mp4",
+  "video4.mp4",
+  "video5.mp4",
+  "video6.mp4"
+
+];
+
+let current=0;
+
+const player=document.getElementById("memoryVideo");
+
+const playPauseBtn=document.getElementById("playPauseBtn");
+
+const rewindBtn=document.getElementById("rewindBtn");
+
+const forwardBtn=document.getElementById("forwardBtn");
+
+const skipBtn=document.getElementById("skipBtn");
+
+const videoCount=document.getElementById("videoCount");
+
+/* LOAD VIDEO */
+
+function loadVideo(index){
+
+  player.src=videos[index];
+
+  player.load();
+
+  videoCount.textContent=`${index+1} / ${videos.length}`;
+
+}
+
+/* START FIRST VIDEO */
+
+loadVideo(current);
+
+/* PLAY ON FIRST CLICK */
+
+document.body.addEventListener("click",()=>{
+
+  player.play();
+
+  playPauseBtn.textContent="⏸";
+
+},{once:true});
+
+/* AUTO NEXT */
+
+player.addEventListener("ended",()=>{
+
+  current++;
+
+  if(current<videos.length){
+
+    loadVideo(current);
+
+    player.play();
+
+  }
+
+});
+
+/* PLAY / PAUSE */
+
+playPauseBtn.addEventListener("click",()=>{
+
+  if(player.paused){
+
+    player.play();
+
+    playPauseBtn.textContent="⏸";
+
+  }else{
+
+    player.pause();
+
+    playPauseBtn.textContent="▶";
+
+  }
+
+});
+
+/* REWIND */
+
+rewindBtn.addEventListener("click",()=>{
+
+  player.currentTime-=10;
+
+});
+
+/* FORWARD */
+
+forwardBtn.addEventListener("click",()=>{
+
+  player.currentTime+=10;
+
+});
+
+/* SKIP */
+
+skipBtn.addEventListener("click",()=>{
+
+  current++;
+
+  if(current<videos.length){
+
+    loadVideo(current);
+
+    player.play();
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
